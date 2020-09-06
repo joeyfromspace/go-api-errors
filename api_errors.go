@@ -26,3 +26,9 @@ func SendInternalError(w http.ResponseWriter, e *errors.APIError) {
 	err := errors.NewInternalError(e)
 	SendError(w, err)
 }
+
+// SendUnauthorizedError sends a 401 response to the passed in writer along with an optinal custom error struct
+func SendUnauthorizedError(w http.ResponseWriter, e *errors.APIError) {
+	err := errors.NewUnauthorizedError(e)
+	SendError(w, err)
+}

@@ -43,3 +43,16 @@ func NewInternalError(overrides *APIError) *APIError {
 
 	return New(defaults, overrides)
 }
+
+// NewUnauthorizedError instantiates a new unauthorized error instance, populating defaults
+func NewUnauthorizedError(overrides *APIError) *APIError {
+	defaults := &APIError{
+		StatusCode: 401,
+		Name:       "Unauthorized",
+		AppCode:    "100",
+		Detail:     "Credentials provided do not have access to this resource",
+		Pointer:    "",
+	}
+
+	return New(defaults, overrides)
+}
