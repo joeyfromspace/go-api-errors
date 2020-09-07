@@ -14,8 +14,8 @@ type APIError struct {
 // New instantiates a new error from the inputted map of values
 func New(defaults *APIError, overrides *APIError) *APIError {
 	e := APIError{}
-	v := reflect.ValueOf(defaults)
-	ov := reflect.ValueOf(overrides)
+	v := reflect.ValueOf(*defaults)
+	ov := reflect.ValueOf(*overrides)
 	for i := 0; i < v.NumField(); i++ {
 		key := v.Type().Field(i).Name
 		value := v.Field(i).Interface()
